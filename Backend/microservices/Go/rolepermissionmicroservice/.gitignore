@@ -1,0 +1,28 @@
+# service1/.gitignore
+/bin/
+/obj/
+*.exe
+*.dll
+
+# Ignorar binarios o archivos compilados
+bin/
+*.exe
+*.out
+
+# Ignorar dependencias o archivos temporales de Go
+vendor/
+*.mod
+*.sum
+
+# Ignorar archivos de configuración locales (Docker, etc.)
+.env
+docker-compose.override.yml
+
+# Ignorar directorios o archivos generados automáticamente
+*.log
+.idea/
+.vscode/
+
+# Ignorar archivos generados por protobuf
+*.pb.go
+*.pb.gw.go

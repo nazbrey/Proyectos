@@ -1,0 +1,4 @@
+# Global ignores
+*.log
+*.tmp
+.DS_Store

@@ -1,0 +1,54 @@
+# Microservicio de Roles y Permisos
+
+Este microservicio está construido con las siguientes tecnologías y patrones:
+
+## Tecnologías Utilizadas
+
+- **gRPC**: Utilizado como protocolo de comunicación para aumentar el rendimiento y la escalabilidad de la aplicación.
+- **CORS**: Implementado para permitir llamadas desde clientes web a la API.
+- **CQRS**: Patrón de diseño que, aunque complejo, permite consultas más eficientes mediante queries.
+- **Arquitectura Hexagonal (Arquitectura Limpia)**: Elegida para lograr una mayor modularidad y limpieza del código.
+- **C#**: Lenguaje de programación utilizado para desarrollar el microservicio.
+- **REDIS**: Utilizado para almacenar los datos de sesión.
+- **RABIITMQ**: Utilizado para la comunicación entre microservicios.
+
+## Descripción del Microservicio
+
+### gRPC
+gRPC se utiliza para la comunicación entre servicios, proporcionando un alto rendimiento y escalabilidad. Los servicios y mensajes se definen en archivos `.proto`.
+
+### CORS
+CORS (Cross-Origin Resource Sharing) se configura para permitir que los clientes web realicen solicitudes a la API sin problemas de seguridad relacionados con el origen.
+
+### CQRS
+El patrón CQRS (Command Query Responsibility Segregation) se implementa para separar las operaciones de lectura y escritura, mejorando la eficiencia de las consultas.
+
+### Arquitectura Hexagonal
+La arquitectura hexagonal, también conocida como arquitectura limpia, se utiliza para mantener el código modular y fácil de mantener. Esto permite una separación clara entre la lógica de negocio y las interfaces externas.
+
+## Estructura del Proyecto
+
+- **Comandos**: Definen las operaciones de escritura.
+- **Consultas**: Definen las operaciones de lectura.
+- **Repositorios**: Manejan la persistencia de datos.
+- **Servicios gRPC**: Implementan la lógica de negocio y exponen los endpoints gRPC.
+
+## Configuración
+
+### Dependencias
+Las principales dependencias utilizadas en el proyecto son:
+- `Grpc.AspNetCore`
+- `MediatR`
+- `MediatR.Extensions.Microsoft.DependencyInjection`
+- `FluentValidation`
+- `Npgsql.EntityFrameworkCore.PostgreSQL`
+
+### Configuración de la Base de Datos
+La base de datos utilizada es PostgreSQL. Asegúrate de configurar la cadena de conexión en `appsettings.json`.
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=RolePermissionDb;Username=yourusername;Password=yourpassword"
+  }
+}

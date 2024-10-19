@@ -1,0 +1,54 @@
+syntax = "proto3"; //con esta linea indicamos que es un prototipo 3.0
+
+option csharp_namespace = "RolePermissionService.Protos"; // con esta linea indicamos que el namespace es RolePermissionService.Protos
+
+package RolePermissionService.Protos; // con esta linea definimos el paquete para todos los mensajes
+
+
+// con esta linea indicamos que el servicio es RoleService
+service RoleService {
+  rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse);
+  rpc GetRole(GetRoleRequest) returns (GetRoleResponse);
+  rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse);
+  rpc DeleteRole(DeleteRoleRequest) returns (DeleteRoleResponse);
+}
+
+// con esta linea indicamos que el mensaje es CreateRoleRequest
+message CreateRoleRequest {
+  string name = 1;
+  string description = 2;
+}
+
+// con esta linea indicamos que el mensaje es CreateRoleResponse
+message CreateRoleResponse {
+  int32 id = 1;
+}
+
+// con esta linea indicamos que el mensaje es GetRoleRequest
+message GetRoleRequest {
+  int32 id = 1;
+}
+// con esta linea indicamos que el mensaje es GetRoleResponse
+message GetRoleResponse {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+}
+// con esta linea indicamos que el mensaje es UpdateRoleRequest
+message UpdateRoleRequest {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+}
+// con esta linea indicamos que el mensaje es UpdateRoleResponse
+message UpdateRoleResponse {
+  bool success = 1;
+}
+// con esta linea indicamos que el mensaje es DeleteRoleRequest
+message DeleteRoleRequest {
+  int32 id = 1;
+}
+// con esta linea indicamos que el mensaje es DeleteRoleResponse
+message DeleteRoleResponse {
+  bool success = 1;
+}

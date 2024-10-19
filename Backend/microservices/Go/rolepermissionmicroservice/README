@@ -1,0 +1,40 @@
+action-service/
+├── cmd/
+│   └── actionservice/            # Contiene el punto de entrada principal
+│       └── main.go               # Archivo principal que inicia el microservicio
+├── api/
+│   └── grpc/                     # gRPC Definitions
+│       └── action.proto          # Archivo proto para la definición de gRPC
+├── internal/
+│   ├── application/              # CQRS se maneja aquí
+│   │   ├── command/              # Comandos (parte de CQRS)
+│   │   │   ├── create_action.go  # Ejemplo de comando para crear acción
+│   │   │   ├── update_action.go  # Ejemplo de comando para actualizar acción
+│   │   ├── query/                # Consultas (parte de CQRS)
+│   │   │   ├── get_action.go     # Ejemplo de consulta para obtener acción
+│   │   │   ├── list_actions.go   # Ejemplo de consulta para listar acciones
+│   │   ├── service/              # Servicios que manejan la lógica de CQRS
+│   │   │   └── action_service.go # Implementación del servicio
+│   ├── domain/                   # Aquí entra la lógica del dominio
+│   │   ├── entity/               # Entidades del dominio
+│   │   │   └── action.go         # Definición de la entidad de acción
+│   │   ├── event/                # Eventos relacionados con el Event Sourcing
+│   │   │   └── action_event.go   # Eventos de acción
+│   │   └── repository/           # Repositorios para la persistencia de la entidad
+│   │       └── action_repository.go
+│   ├── infrastructure/           # Implementación técnica (Kafka, Redis, gRPC)
+│   │   ├── eventstore/           # Manejo de eventos de Event Sourcing
+│   │   │   └── kafka_eventstore.go
+│   │   ├── messaging/            # Comunicación a través de Kafka
+│   │   │   └── kafka_consumer.go  # Consumidor de Kafka
+│   │   │   └── kafka_producer.go  # Productor de Kafka
+│   │   ├── cache/                # Conexión y manejo de Redis
+│   │   │   └── redis_cache.go
+│   │   ├── grpc/                 # Implementación de gRPC
+│   │   │   └── action_grpc.go    # Implementación del servidor gRPC
+│   └── config/                   # Configuración de la aplicación
+│       └── config.go             # Configuración de Redis, Kafka, gRPC, DB, etc.
+├── docker/
+│   ├── Dockerfile                # Dockerfile del microservicio
+│   └── docker-compose.yml        # Compose para levantar solo este microservicio
+└── Makefile                      # Makefile para comandos útiles (build, run, etc.)

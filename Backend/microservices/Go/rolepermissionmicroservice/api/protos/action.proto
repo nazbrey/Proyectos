@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package action;
+
+service ActionService {
+    rpc CreateAction (CreateActionRequest) returns (CreateActionResponse);
+    rpc GetAction (GetActionRequest) returns (GetActionResponse);
+}
+
+message CreateActionRequest {
+    string name = 1;
+    string description = 2;
+}
+
+message CreateActionResponse {
+    bool success = 1;
+}
+
+message GetActionRequest {
+    string id = 1;
+}
+
+message GetActionResponse {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+// por el momento solo tengo crear y obtener
